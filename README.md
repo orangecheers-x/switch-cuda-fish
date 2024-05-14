@@ -12,7 +12,7 @@ Switched to CUDA 12.4.
 ```
 
 ``` fish
-> source switchcuda.fish                                           (slora)
+> source switchcuda.fish
 The following CUDA installations have been found (in '/usr/local'):
 * cuda-11.8
 * cuda-12.4
