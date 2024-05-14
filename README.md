@@ -1,43 +1,19 @@
-switch-cuda
-===========
+# switch-cuda-fish
 
-Sometimes, it becomes necessary to switch to an earlier version of CUDA in order to run older code on a machine that is
-actually set up to use the current version of the CUDA toolkit.
-This is as simple as adjusting the values of a few environment variables, yet it is cumbersome to do manually.
-Therefore, this repository provides the bash script [`switch-cuda.sh`](switch-cuda.sh), which adjusts the environment to
-use a specific version of CUDA **for the current bash session**.
+在多版本cuda共存时, 这个fish script可以帮助切换环境变量中指定的cuda版本.
 
-**Notice:** [`switch-cuda.sh`](switch-cuda.sh) has been written for and tested on Ubuntu 16.04, but is easily adapted
-for other platforms.
+这个script时供fish shell用的, 在 https://github.com/phohenecker/switch-cuda 基础上修改. 原作者的script是为bash shell设计的, 我将其迁移到fish shell.
 
+## Usage
 
-Usage
------
-
-```
-source switch-cuda.sh [VERSION]
+``` fish
+> source switchcuda.fish 12.4
+Switched to CUDA 12.4.
 ```
 
-Notice that the script has to be sourced rather than executed, as it performs changes of environment variables that are
-supposed to persist after the script has finished.
-If a version number is provided, than all relevant environment variables are adjusted to the required CUDA version
-(including `PATH`, `LD_LIBRARY_PATH`, `CUDA_HOME`, and `CUDA_ROOT`).
-If no version is provided, however, then the script simply prints all versions of CUDA that have been found on the used
-machine (in `/usr/local`).
-
-
-Examples
---------
-
-```
-$ source switch-cuda.sh 
+``` fish
+> source switchcuda.fish                                           (slora)
 The following CUDA installations have been found (in '/usr/local'):
-* cuda-8.0
-* cuda-9.0
-* cuda-9.1
-```
-
-```
-$ source switch-cuda.sh 9.0
-Switched to CUDA 9.0.
+* cuda-11.8
+* cuda-12.4
 ```
